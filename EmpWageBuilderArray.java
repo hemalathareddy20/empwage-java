@@ -11,7 +11,10 @@
 
         private LinkedList<empWageComputation> empWageComputationList;
         private Map<String, empWageComputation>empWageComputationMap;
+<<<<<<< HEAD
         
+=======
+>>>>>>> UC-12-Array-LinkedList
         public EmpWageBuilderArray()
         {
                 empWageComputationList= new LinkedList<empWageComputation>();
