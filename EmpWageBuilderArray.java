@@ -1,29 +1,33 @@
-  public class EmpWageBuilderArray {
+  import java.util.Map;
+  import java.util.LinkedList;
+  public class EmpWageBuilderArray implements IComputeEmpWage {
 
         public static final int IS_PART_TIME=1;
         public static final int IS_FULL_TIME=2;
 
         public int numOfCompany=0;
 
-        empWageComputation empWageComputation[];
+        private LinkedList<empWageComputation> empWageComputationList;
 
-        public EmpWageBuilderArray()
+        public void EmpWageBuilderArray()
         {
-                empWageComputation=new empWageComputation[5];
+                empWageComputationList= new LinkedList<empWageComputation>();
         }
 
         private void addempWageComputation(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth)
         {
-                empWageComputation[numOfCompany]=new empWageComputation(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-                numOfCompany++;
+            empWageComputation empWageComputation=new empWageComputation(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);	
+		
+                empWageComputationList.add(empWageComputation);
         }
 
         private void computeEmpWage()
         {
                 for (int i = 0; i <numOfCompany; i++)
                 {
-                        empWageComputation[i].setTotalEmpWage(this.computeEmpWage(empWageComputation[i]));
-                        System.out.println(empWageComputation[i]);
+                        empWageComputation company=empWageComputationList.get(i);
+		        company.setTotalEmpWage(this.computeEmpWage(company));
+			System.out.println(company);
                 }
         }
 
@@ -55,6 +59,8 @@
                 empWageBuilder.addempWageComputation("wipro", 10, 4, 20);
                 empWageBuilder.computeEmpWage();
         }
-
-}
-
+	public int getTotalWage(String company) {
+		return empWageComputationMap.get(company).totalEmpWage;
+		 
+	}
+  }
