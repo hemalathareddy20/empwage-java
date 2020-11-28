@@ -8,20 +8,20 @@
         public int numOfCompany=0;
 
         private LinkedList<empWageComputation> empWageComputationList;
-
-        public void EmpWageBuilderArray()
+        private Map<String, empWageComputation>empWageComputationMap;
+        public EmpWageBuilderArray()
         {
                 empWageComputationList= new LinkedList<empWageComputation>();
         }
 
-        private void addempWageComputation(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth)
+        public void addempWageComputation(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth)
         {
             empWageComputation empWageComputation=new empWageComputation(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);	
 		
                 empWageComputationList.add(empWageComputation);
         }
 
-        private void computeEmpWage()
+        public void computeEmpWage()
         {
                 for (int i = 0; i <numOfCompany; i++)
                 {
@@ -32,7 +32,7 @@
         }
 
 
-       private int computeEmpWage(empWageComputation empWageComputation) {
+       public int computeEmpWage(empWageComputation empWageComputation) {
        int empHrs=0, totalEmpHrs=0, totalWorkingDays=0;
        while( totalEmpHrs <= empWageComputation.maxHoursPerMonth && totalWorkingDays < empWageComputation.numOfWorkingDays ) {
          totalWorkingDays++;
